@@ -1,5 +1,5 @@
 
-export type LayerType = 'raster' | 'text' | 'empty' | 'img';
+export type LayerType = 'raster' | 'text' | 'empty' | 'img' | 'fill';
 
 export interface TextData {
     text: string;
@@ -8,7 +8,11 @@ export interface TextData {
     color: string;
     bold: boolean;
     italic: boolean;
+    underline: boolean;
     align: 'left' | 'center' | 'right';
+    strokeColor: string;
+    strokeWidth: number;
+    shadow: boolean;
 }
 
 export interface PanelState {
@@ -25,6 +29,7 @@ export interface PanelsConfig {
     layers: PanelState;
     settings: PanelState;
     resize: PanelState;
+    [key: string]: PanelState;
 }
 
 export interface CanvasSize {
@@ -42,7 +47,15 @@ export interface BrushProps {
     color: string;
 }
 
+export interface GroundingSource {
+    title?: string;
+    uri: string;
+}
+
 export interface AIState {
     loading: boolean;
     feedback: string;
+    sources?: GroundingSource[];
 }
+
+export type ToolType = 'move' | 'rect' | 'lasso' | 'wand' | 'crop' | 'brush' | 'eraser' | 'bucket' | 'gradient' | 'text' | 'shape' | 'stamp' | 'pipette' | 'hand' | 'zoom' | 'ai';
