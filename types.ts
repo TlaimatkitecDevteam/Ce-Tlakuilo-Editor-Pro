@@ -1,4 +1,3 @@
-
 export type LayerType = 'raster' | 'text' | 'empty' | 'img' | 'fill';
 
 export interface TextData {
